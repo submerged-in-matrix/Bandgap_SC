@@ -1,67 +1,62 @@
-Band Gap Prediction from Composition-Only Descriptors
+# Band Gap Prediction from Composition-Only Descriptors
 
-This project investigates how far one can push band gap prediction of semiconductors using composition-only descriptors, deliberately excluding structural information.
+## Overview
 
-Motivation
-
-Band gap prediction typically relies on structural fingerprints or DFT-derived quantities. This study isolates the predictive power of purely compositional features to understand the limits of structure-agnostic modeling.
+This project investigates how far band gap prediction of semiconductors can be pushed using **composition-only descriptors**, deliberately excluding structural information.
 
 The central question:
 
-How much electronic behavior can be inferred from chemistry alone?
+> How much electronic behavior can be inferred from chemistry alone?
 
-Data
+---
 
-~4,600 semiconductor entries
+## Dataset
 
-Source: Matbench dataset (Materials Project origin)
+- ~4,600 semiconductor entries  
+- Source: Matbench (Materials Project origin)  
+- Target: Continuous band gap regression  
 
-Target: Band gap (continuous regression)
+---
 
-Feature Engineering
+## Feature Engineering
 
-Featurization via Matminer
-
-Composition-derived elemental statistics
-
-SHAP-based global importance ranking
-
-Iterative pruning and feature subset optimization
+- Featurization via **Matminer**
+- Elemental statistical descriptors
+- SHAP-based global importance ranking
+- Iterative feature pruning
 
 No structural features were used.
 
-Models
+---
 
-Individually optimized tree-based ensemble models:
+## Models
 
-Random Forest
+Individually optimized ensemble regressors:
 
-XGBoost
+- Random Forest  
+- XGBoost  
+- LightGBM  
 
-LightGBM
+Hyperparameters were manually tuned to analyze model behavior under descriptor constraints.
 
-Hyperparameters were tuned explicitly (not AutoML-driven) to study model behavior under constrained descriptors.
+---
 
-Results
+## Results
 
-Proxy R² ≈ 0.78
+- Proxy R² ≈ **0.78**
+- Stable cross-validation performance
+- Clear feature dominance patterns from SHAP analysis
 
-Stable cross-validation performance
+---
 
-Clear feature dominance patterns revealed via SHAP
+## Observations
 
-Observations
+Composition carries substantial electronic signal, but structural descriptors are likely required to exceed ~0.8 R².
 
-Composition carries substantial electronic signal.
+---
 
-Ensemble diversity improves robustness under feature sparsity.
+## Future Work
 
-Structural descriptors are likely required for further gains beyond ~0.8 R².
-
-Next Steps
-
-Introduce structure-derived features (e.g., coordination, symmetry proxies)
-
-Incorporate physics-motivated corrections (quantum confinement, SOC proxies)
-
-Expand dataset size and include wider band gap regimes
+- Incorporate structural features  
+- Include physics-aware corrections (e.g., SOC proxies)  
+- Expand dataset scale
