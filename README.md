@@ -4,7 +4,7 @@
 
 This project investigates how far band gap prediction of semiconductors can be pushed using **composition-only descriptors**, deliberately excluding structural information.
 
-The central question:
+The central question I wondered:
 
 > How much electronic behavior can be inferred from chemistry alone?
 
@@ -20,7 +20,7 @@ The central question:
 
 ## Feature Engineering
 
-- Featurization via **Matminer**
+- Featurization via **Matminer, Pymatgen**
 - Elemental statistical descriptors
 - SHAP-based global importance ranking
 - Iterative feature pruning
@@ -51,12 +51,12 @@ Hyperparameters were manually tuned to analyze model behavior under descriptor c
 
 ## Observations
 
-Composition carries substantial electronic signal, but structural descriptors are likely required to exceed ~0.8 R².
+Composition carries substantial electronic signal, but structural descriptors (e.g., Smooth Overlap of Atomic Positions (SOAP)) are likely required to exceed ~0.8 R². 
 
 ---
 
 ## Future Work
 
 - Incorporate structural features  
-- Include physics-aware corrections (e.g., SOC proxies)  
 - Expand dataset scale
+- Expand to various materials systems other than Semiconductors.
